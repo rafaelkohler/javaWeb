@@ -1,13 +1,13 @@
-package br.edu.dsj.scv.web;
+package com.rafaelkohler.scv.web;
 
 import java.util.ArrayList;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
-import br.edu.dsj.scv.entidade.Veiculo;
-import br.edu.dsj.scv.modelo.ServicoVeiculo;
-import br.edu.dsj.scv.web.util.JSFUtils;
+import com.rafaelkohler.scv.entidade.Veiculo;
+import com.rafaelkohler.scv.modelo.ServicoVeiculo;
+import com.rafaelkohler.scv.web.util.JSFUtils;
 
 @Named
 @RequestScoped

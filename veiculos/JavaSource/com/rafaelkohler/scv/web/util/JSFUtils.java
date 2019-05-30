@@ -1,4 +1,4 @@
-package br.edu.dsj.scv.web.util;
+package com.rafaelkohler.scv.web.util;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -6,7 +6,7 @@ import javax.faces.context.FacesContext;
 /**
  * Classe para eventos utilitários de JSF
  * 
- * @author 4694
+ * @author Rafael Kohler
  *
  */
 public class JSFUtils {

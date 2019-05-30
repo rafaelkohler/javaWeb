@@ -1,13 +1,13 @@
-package br.edu.dsj.scv.modelo;
+package com.rafaelkohler.scv.modelo;
 
 import java.util.ArrayList;
 
-import br.edu.dsj.scv.entidade.Marca;
+import com.rafaelkohler.scv.entidade.Marca;
 
 /**
  * Classe para teste de persistencia.
  * 
- * @author 4694
+ * @author Rafael Kohler
  *
  */
 public class ServicoMarca {

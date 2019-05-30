@@ -1,15 +1,15 @@
-package br.edu.dsj.scv.entidade;
+package com.rafaelkohler.scv.entidade;
 
 import java.util.Date;
 
 import javax.validation.constraints.NotNull;
 
-import br.edu.dsj.scv.enumerado.Combustivel;
+import com.rafaelkohler.scv.enumerado.Combustivel;
 
 /**
  * Representa um veículo
  * 
- * @author 4694
+ * @author Rafael Kohler
  *
  */
 

@@ -1,8 +1,8 @@
-package br.edu.dsj.scv.modelo;
+package com.rafaelkohler.scv.modelo;
 
 import java.util.ArrayList;
 
-import br.edu.dsj.scv.entidade.Veiculo;
+import com.rafaelkohler.scv.entidade.Veiculo;
 
 public class ServicoVeiculo {
 

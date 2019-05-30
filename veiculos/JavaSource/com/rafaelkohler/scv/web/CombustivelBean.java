@@ -1,9 +1,9 @@
-package br.edu.dsj.scv.web;
+package com.rafaelkohler.scv.web;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 
-import br.edu.dsj.scv.enumerado.Combustivel;
+import com.rafaelkohler.scv.enumerado.Combustivel;
 
 @Named
 @ApplicationScoped

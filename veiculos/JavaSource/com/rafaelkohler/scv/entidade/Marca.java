@@ -1,11 +1,11 @@
-package br.edu.dsj.scv.entidade;
+package com.rafaelkohler.scv.entidade;
 
 import javax.validation.constraints.NotBlank;
 
 /**
  * Representa a {@link Marca} de um Automóvel.
  * 
- * @author 4694
+ * @author Rafael Kohler
  *
  */
 public class Marca {
