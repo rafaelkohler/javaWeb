@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<style type="text/css">
+
+/* .ui-panel .ui-panel-footer{ */
+/* 	text-align: center!important; */
+/* 	border: 2px dashed red; */
+/* 	border-radius: 15px; */
+/* } */
+</style>
+</h:head>
+<h:body>
+
+	<h:form>
+
+		<p:growl globalOnly="true" life="10000" />
+
+		<p:panel header="Cadastro de marcas">
+
+			<p:panelGrid columns="3">
+
+				<p:outputLabel for="n1" value="Nome:" />
+				<p:inputText id="n1" value="#{marcaBean.marca.nome}" />
+				<p:message for="n1" />
+
+				<p:outputLabel for="n2" value="Descrição:" />
+				<p:inputTextarea id="n2" rows="4"
+					value="#{marcaBean.marca.descricao}" />
+				<p:message for="n2" />
+
+			</p:panelGrid>
+
+			<f:facet name="footer">
+
+				<p:commandButton value="salvar" action="#{marcaBean.salvarMarca()}"
+					update="@form" />
+
+				<p:button value="Lista de marcas" outcome="marcasCadastradas"
+					target="_blank" />
+
+			</f:facet>
+
+		</p:panel>
+
+
+	</h:form>
+
+</h:body>
+</html>
