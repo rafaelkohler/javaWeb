@@ -16,7 +16,7 @@ public class ServicoUsuario {
 		return usuariosCadastrados;
 	}
 	
-	public static void excluirUsuario(Usuario usuario) {
+	public static void removerUsuario(Usuario usuario) {
 		usuariosCadastrados.remove(usuario);
 	}
 

@@ -58,8 +58,8 @@ public class Pessoa {
 		this.dataNascimento = dataNascimento;
 	}
 
-	public String getSexo() {
-		return sexo;
+	public String getSexoString() {
+		return sexo != null && !sexo.isEmpty() && sexo.equals("M") ? "Masculino" : "Feminino";
 	}
 
 	public void setSexo(String sexo) {
