@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 /**
  * Representa a {@link Marca} de um Automóvel.
@@ -22,13 +23,13 @@ import javax.validation.constraints.NotBlank;
 public class Marca {
 
 	@Id
+	@NotNull
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	@NotBlank
 	private String nome;
 
-	@NotBlank
 	private String descricao;
 	
 	@OneToMany(mappedBy = "marca")

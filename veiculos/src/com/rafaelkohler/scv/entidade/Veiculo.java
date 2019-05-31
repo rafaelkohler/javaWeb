@@ -45,7 +45,6 @@ public class Veiculo {
 
 	private Integer anoFabricacao;
 
-	@NotNull
 	private Combustivel combustivel;
 
 	private Double precoFipe;
