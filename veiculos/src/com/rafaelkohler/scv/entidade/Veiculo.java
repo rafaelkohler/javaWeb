@@ -2,6 +2,14 @@ package com.rafaelkohler.scv.entidade;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import com.rafaelkohler.scv.enumerado.Combustivel;
@@ -12,10 +20,17 @@ import com.rafaelkohler.scv.enumerado.Combustivel;
  * @author Rafael Kohler
  *
  */
-
+@Entity
+@Table(name = "veiculo")
 public class Veiculo {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	
 	@NotNull
+	@ManyToOne
+	@JoinColumn(name = "id_marca")
 	private Marca marca;
 
 	private String modelo;
@@ -107,4 +122,12 @@ public class Veiculo {
 		this.combustivel = combustivel;
 	}
 
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
 }
