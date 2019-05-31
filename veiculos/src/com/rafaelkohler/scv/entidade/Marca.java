@@ -27,7 +27,6 @@ public class Marca {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@NotBlank
 	private String nome;
 
 	private String descricao;
