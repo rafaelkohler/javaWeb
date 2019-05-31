@@ -6,11 +6,11 @@ import com.rafaelkohler.cadastrousuario.entity.Usuario;
 import com.rafaelkohler.cadastrousuario.model.ServicoUsuario;
 import com.rafaelkohler.cadastrousuario.util.JSFUtil;
 
-public class UsuarioMB {
+public class LoginMB {
 
 	private Usuario usuario;
 	
-	public UsuarioMB() {
+	public LoginMB() {
 		this.usuario = new Usuario();
 	}
 
