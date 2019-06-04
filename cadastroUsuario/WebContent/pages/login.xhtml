@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Por favor realize seu login</title>
+</h:head>
+
+<h:body>
+
+	<h:form>
+		<p:growl globalOnly="true" life="5000" />
+		<p:fieldset legend="Forneça suas credenciais para acessar o sistema!" style="width: 30%; margin: 0px auto; ">
+
+			<div class="ui-g" >
+				<div class="ui-g-12">
+					<p:outputLabel for="login" value="Login:" />
+					<p:inputText id="login" value="#{loginMB.usuario.login}" style="margin-left: 20px;" />
+					<p:message for="login" />
+				</div>
+
+				<div class="ui-g-12">
+					<p:outputLabel for="senha" value="Senha:" />
+					<p:password id="senha" value="#{loginMB.usuario.senha}" style="margin-left: 20px;"/>
+					<p:message for="senha" />
+				</div>
+			</div>
+
+			<div class="ui-g-12">
+				<p:commandButton action="#{loginMB.efetuaLogin()}" update="@form" value="Entrar" style="width: 30%;" />
+			</div>
+
+			<div class="ui-g-12" style="padding-top: 40px;">
+				Ainda não é cadastrado? Clique
+				<p:commandLink value="aqui." action="#{loginMB.formUsuario}" immediate="true" />
+			</div>
+		</p:fieldset>
+	</h:form>
+
+</h:body>
+</html>

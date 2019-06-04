@@ -1,10 +1,12 @@
 package com.rafaelkohler.cadastrousuario.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import com.rafaelkohler.cadastrousuario.enumarator.Esporte;
 import com.rafaelkohler.cadastrousuario.enumarator.Estados;
+import com.rafaelkohler.cadastrousuario.managed.EstadoMB;
 
 public class Pessoa {
 	
@@ -14,10 +16,15 @@ public class Pessoa {
 	private Usuario usuario;
 	private Date dataNascimento;
 	private String sexo;
-	private Estados estado;
+	private String estado;
 	
 	private List<Esporte> esportesFavorito;
 
+	public Pessoa() {
+		this.usuario = new Usuario();
+		this.esportesFavorito = new ArrayList<Esporte>();
+		
+	}
 	public String getNomeCompleto() {
 		return nomeCompleto;
 	}
@@ -59,18 +66,22 @@ public class Pessoa {
 	}
 
 	public String getSexoString() {
-		return sexo != null && !sexo.isEmpty() && sexo.equals("M") ? "Masculino" : "Feminino";
+		return sexo != null && !sexo.isEmpty() && sexo.equals("1") ? "Masculino" : "Feminino";
+	}
+	
+	public String getSexo() {
+		return sexo;
 	}
 
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
 
-	public Estados getEstado() {
+	public String getEstado() {
 		return estado;
 	}
 
-	public void setEstado(Estados estado) {
+	public void setEstado(String estado) {
 		this.estado = estado;
 	}
 

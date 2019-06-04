@@ -33,14 +33,18 @@ public class LoginMB {
 		ServicoUsuario.removerUsuario(usuario);
 		JSFUtil.enviarMensagem("Usuário removido!");
 	}
+	
+	public String formUsuario() {
+		return "cadastrarusuario?faces-redirect=true";
+	}
 
-	public void logado(Usuario usu) {
-		if (usu.getLogin() == this.usuario.getLogin() && usu.getSenha() == this.usuario.getSenha()) {
-
-			return;
-		} else {
-			JSFUtil.enviarMensagem("Usuário já cadastrado!");
+	public String efetuaLogin() {
+		boolean existe = new ServicoUsuario().existe(this.usuario);
+		if(existe ) {
+			return "usuarioscadastrados?faces-redirect=true";
 		}
+		this.usuario = new Usuario();
+		return "login";
 	}
 
 	public Usuario getUsuario() {

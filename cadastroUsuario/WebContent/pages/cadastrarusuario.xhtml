@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Por favor realize seu cadastro</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:growl globalOnly="true" />
+		<p:fieldset legend="Forneça as informações abaixo para realizar o seu cadastro." style="width: 40%; margin: 0px auto;">
+
+			<div class="ui-g">
+
+				<div class="ui-g-12">
+					<div class="ui-g-2">
+						<p:outputLabel for="nome" value="Nome: " />
+					</div>
+					<div class="ui-g-10">
+						<h:inputText id="nome" value="#{cadastrarUsuarioMB.pessoa.nomeCompleto}" style="width: 100%;" />
+						<p:message for="nome" />
+					</div>
+				</div>
+
+				<div class="ui-g-12">
+					<div class="ui-g-2">
+						<p:outputLabel for="cpf" value="CPF: " />
+					</div>
+					<div class="ui-g-4">
+						<h:inputText id="cpf" value="#{cadastrarUsuarioMB.pessoa.cpf}" style="width: 100%;" />
+						<p:message for="cpf" />
+					</div>
+
+					<div class="ui-g-1">
+						<p:outputLabel for="rg" value="RG: " />
+					</div>
+					<div class="ui-g-5">
+						<h:inputText id="rg" value="#{cadastrarUsuarioMB.pessoa.rg}" style="width: 100%;" />
+						<p:message for="rg" />
+					</div>
+				</div>
+
+				<div class="ui-g-12">
+					<div class="ui-g-2">
+						<p:outputLabel for="usu" value="Usuário: " />
+					</div>
+					<div class="ui-g-10">
+						<h:inputText id="usu" value="#{cadastrarUsuarioMB.pessoa.usuario.login}" style="width: 100%;" />
+						<p:message for="usu" />
+					</div>
+				</div>
+
+				<div class="ui-g-12">
+					<div class="ui-g-2">
+						<p:outputLabel for="senha" value="Senha: " />
+					</div>
+					<div class="ui-g-10">
+						<p:password id="senha" value="#{cadastrarUsuarioMB.pessoa.usuario.senha}" style="width: 100%;" />
+						<p:message for="senha" />
+					</div>
+				</div>
+
+				<div class="ui-g-12">
+					<div class="ui-g-2">
+						<p:outputLabel for="nascimento" value="Dia Nasc.: " />
+					</div>
+					<div class="ui-g-4">
+						<p:calendar id="nascimento" value="#{cadastrarUsuarioMB.pessoa.dataNascimento}" pattern="dd/MM/yyyy" mask="true" style="width: 100%;" />
+						<p:message for="nascimento" />
+					</div>
+
+					<div class="ui-g-1">
+						<p:outputLabel for="sexo" value="Sexo: " />
+					</div>
+					<div class="ui-g-5">
+						<p:selectOneRadio id="sexo" value="#{cadastrarUsuarioMB.pessoa.sexo}">
+							<f:selectItem itemLabel="Masculino" itemValue="1" />
+							<f:selectItem itemLabel="Feminino" itemValue="2" />
+						</p:selectOneRadio>
+						<p:message for="sexo" />
+					</div>
+				</div>
+
+
+				<div class="ui-g-12">
+					<div class="ui-g-2">
+						<p:outputLabel for="uf" value="UF Nasc.: " />
+					</div>
+					<div class="ui-g-4">
+						<p:selectOneMenu id="uf" value="#{cadastrarUsuarioMB.pessoa.estado}" converter="omnifaces.SelectItemsIndexConverter" style="width: 100%;">
+							<f:selectItem itemLabel="--Selecione--" noSelectionOption="true" />
+							<f:selectItems value="#{estadoMB.listaEstados()}" var="estado" itemLabel="#{estado.nome}" itemValue="#{estado}" />
+						</p:selectOneMenu>
+						<p:message for="uf" />
+					</div>
+					<div class="ui-g-6"></div>
+				</div>
+
+				<div class="ui-g-12">
+					<div class="ui-g-2">
+						<p:outputLabel for="esporte" value="Esportes: " />
+					</div>
+					<div class="ui-g-10">
+						<p:selectManyCheckbox id="esporte" value="#{cadastrarUsuarioMB.pessoa.esportesFavorito}" layout="grid" columns="4">
+							<f:selectItems value="#{esporteMB.listaEsportes()}" var="esporte" itemLabel="#{esporte.nome}" itemValue="#{esporte}" />
+						</p:selectManyCheckbox>
+					</div>
+				</div>
+
+			</div>
+
+			<p:commandButton action="#{cadastrarUsuarioMB.cadastrarUsuario()}" value="Efetue seu cadastro!" update="@form" />
+		</p:fieldset>
+	</h:form>
+</h:body>
+</html>
