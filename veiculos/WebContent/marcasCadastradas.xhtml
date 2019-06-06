@@ -5,14 +5,16 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head></h:head>
+<h:head>
+<title>Lista de Marcas cadastradas</title>
+</h:head>
 <h:body>
 
 	<h:form>
 
 		<p:growl globalOnly="true" />
 
-		<p:dataTable value="#{marcaBean.listarMarcas()}" var="marca">
+		<p:dataTable value="#{marcaBean.listarMarcas()}" var="marca" styleClass="ui-datatable">
 			<p:column headerText="Nome">
 				<h:outputText value="#{marca.nome}" />
 			</p:column>

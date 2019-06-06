@@ -1,6 +1,10 @@
 package com.rafaelkohler.scv.modelo;
 
-import java.util.ArrayList;
+import java.util.List;
+
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import com.rafaelkohler.scv.entidade.Marca;
 
@@ -10,31 +14,23 @@ import com.rafaelkohler.scv.entidade.Marca;
  * @author Rafael Kohler
  *
  */
+@Stateless //dispara por varios clusters a implantacao do software
 public class ServicoMarca {
 
-	/**
-	 * Lista fake de banco de dados
-	 */
-	private static ArrayList<Marca> marcasCadastradas = new ArrayList<Marca>();
-
-	static {
-		marcasCadastradas.add(new Marca("Fiat","tttt"));
-		marcasCadastradas.add(new Marca("Volvo","tttt"));
-		marcasCadastradas.add(new Marca("Hiunday","tttt"));
-		marcasCadastradas.add(new Marca("Renault","tttt"));
-		marcasCadastradas.add(new Marca("Ford","tttt"));
-	}
+	@PersistenceContext(unitName = "veiculo")
+	private EntityManager entityManager; //conecta com o banco
 	
-	public static void cadastrarMarca(Marca marca) {
-		marcasCadastradas.add(marca);
+	public void cadastrarMarca(Marca marca) {
+		this.entityManager.persist(marca);
 	}
 
-	public static ArrayList<Marca> listar() {
-		return marcasCadastradas;
+	public List<Marca> listar() {
+		return this.entityManager.createQuery("FROM Marca m", Marca.class).getResultList();
 	}
 
-	public static void excluirMarca(Marca marca) {
-		marcasCadastradas.remove(marca);
+	public void excluirMarca(Marca marca) {
+		this.entityManager.remove(this.entityManager.merge(marca));
+		
 	}
 	
 }

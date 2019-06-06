@@ -1,23 +1,29 @@
 package com.rafaelkohler.scv.modelo;
 
-import java.util.ArrayList;
+import java.util.List;
+
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import com.rafaelkohler.scv.entidade.Veiculo;
 
+@Stateless
 public class ServicoVeiculo {
 
-	private static ArrayList<Veiculo> veiculos = new ArrayList<Veiculo>();
+	@PersistenceContext(unitName = "veiculo")
+	private EntityManager entityManager;
 
-	public static void cadastrarVeiculo(Veiculo veiculo) {
-		veiculos.add(veiculo);
+	public void cadastrarVeiculo(Veiculo veiculo) {
+		this.entityManager.persist(veiculo);
 	}
 
-	public static ArrayList<Veiculo> listar() {
-		return veiculos;
+	public List<Veiculo> listar() {
+		return this.entityManager.createQuery("FROM Veiculo v", Veiculo.class).getResultList();
 	}
 
-	public static void excluirVeiculo(Veiculo veiculo) {
-		veiculos.remove(veiculo);
+	public void excluirVeiculo(Veiculo veiculo) {
+		this.entityManager.remove(this.entityManager.merge(veiculo));
 	}
 
 }

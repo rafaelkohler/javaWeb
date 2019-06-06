@@ -6,6 +6,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
+<title>Cadastro de marcas</title>
 	<style type="text/css">
 
 /* .ui-panel .ui-panel-footer{ */
@@ -23,7 +24,7 @@
 
 		<p:panel header="Cadastro de marcas">
 
-			<p:panelGrid columns="3">
+			<p:panelGrid columns="3" styleClass="ui-panelgrid-blank">
 
 				<p:outputLabel for="n1" value="Nome:" />
 				<p:inputText id="n1" value="#{marcaBean.marca.nome}" />

@@ -1,7 +1,9 @@
 package com.rafaelkohler.scv.web;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
@@ -13,25 +15,28 @@ import com.rafaelkohler.scv.web.util.JSFUtils;
 @RequestScoped
 public class MarcaBean {
 
+	@EJB
+	private ServicoMarca servicoMarca;
 	private Marca marca;
+	private List<Marca> marcas = new ArrayList<Marca>();
 
 	public MarcaBean() {
 		this.marca = new Marca();
 	}
 
 	public void salvarMarca() {
-		ServicoMarca.cadastrarMarca(this.marca);
+		this.servicoMarca.cadastrarMarca(this.marca);
 		this.marca = new Marca();
 		JSFUtils.enviarMensagemDeSucesso("Marca cadastrada com sucesso!");
 	}
 
 	public void excluirMarca(Marca marca) {
-		ServicoMarca.excluirMarca(marca);
+		this.servicoMarca.excluirMarca(marca);
 		JSFUtils.enviarMensagemDeSucesso("Marca excluída com sucesso!");
 	}
 
-	public ArrayList<Marca> listarMarcas() {
-		return ServicoMarca.listar();
+	public List<Marca> listarMarcas() {
+		return marcas = this.servicoMarca.listar();
 	}
 
 	public Marca getMarca() {
@@ -42,4 +47,13 @@ public class MarcaBean {
 		this.marca = marca;
 	}
 
+	public List<Marca> getMarcas() {
+		return marcas;
+	}
+
+	public void setMarcas(List<Marca> marcas) {
+		this.marcas = marcas;
+	}
+
+	
 }
