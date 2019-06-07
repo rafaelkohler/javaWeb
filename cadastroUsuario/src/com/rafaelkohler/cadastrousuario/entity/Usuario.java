@@ -1,14 +1,34 @@
 package com.rafaelkohler.cadastrousuario.entity;
 
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+@Entity
+@Table(name = "usuario")
 public class Usuario {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "NUM_SEQ_USUARIO")
+	@SequenceGenerator(name =  "NUM_SEQ_USUARIO", sequenceName = "NUM_SEQ_USUARIO", allocationSize = 0)
+	private Integer id;
 
 	@NotBlank
 	private String login;
 
 	@NotBlank
 	private String senha;
+	
+	@OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
+	private List<Cliente> clientes;
 
 	public Usuario() {
 	}

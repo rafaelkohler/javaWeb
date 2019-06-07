@@ -1,6 +1,6 @@
 package com.rafaelkohler.cadastrousuario.managed;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
@@ -13,24 +13,22 @@ import com.rafaelkohler.cadastrousuario.util.JSFUtil;
 @RequestScoped
 public class LoginMB {
 
+	private ServicoUsuario servicoUsuario;
 	private Usuario usuario;
+	private List<Usuario> usuarios;
 
 	public LoginMB() {
 		this.usuario = new Usuario();
 	}
 
 	public void cadastrarUsuario() {
-		ServicoUsuario.cadastrarUsuario(this.usuario);
+		this.servicoUsuario.cadastrarUsuario(this.usuario);
 		this.usuario = new Usuario();
 		JSFUtil.enviarMensagem("Usuário cadastrado");
 	}
 
-	public ArrayList<Usuario> listarUsuario() {
-		return ServicoUsuario.listar();
-	}
-
 	public void excluirUsuario(Usuario usuario) {
-		ServicoUsuario.removerUsuario(usuario);
+		this.servicoUsuario.removerUsuario(usuario);
 		JSFUtil.enviarMensagem("Usuário removido!");
 	}
 	
@@ -40,7 +38,7 @@ public class LoginMB {
 
 	public String efetuaLogin() {
 		boolean existe = new ServicoUsuario().existe(this.usuario);
-		if(existe ) {
+		if(existe) {
 			return "usuarioscadastrados?faces-redirect=true";
 		}
 		this.usuario = new Usuario();
@@ -54,5 +52,18 @@ public class LoginMB {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+
+	public List<Usuario> getUsuarios() {
+		if(this.usuarios == null || this.usuarios.isEmpty()) {
+			this.usuarios = this.servicoUsuario.listar();
+		}
+		return usuarios;
+	}
+
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+	
+	
 
 }

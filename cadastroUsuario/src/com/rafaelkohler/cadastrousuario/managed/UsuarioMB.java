@@ -1,41 +1,52 @@
 package com.rafaelkohler.cadastrousuario.managed;
 
-import java.util.ArrayList;
+import java.util.List;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
-import com.rafaelkohler.cadastrousuario.entity.Pessoa;
-import com.rafaelkohler.cadastrousuario.entity.Usuario;
-import com.rafaelkohler.cadastrousuario.model.ServicoPessoa;
-import com.rafaelkohler.cadastrousuario.model.ServicoUsuario;
+import com.rafaelkohler.cadastrousuario.entity.Cliente;
+import com.rafaelkohler.cadastrousuario.model.ServicoCliente;
 import com.rafaelkohler.cadastrousuario.util.JSFUtil;
 
 @Named
 @RequestScoped
 public class UsuarioMB {
 
-	private Pessoa pessoa;
+	@EJB
+	private ServicoCliente servicoCliente;
+	private Cliente cliente;
+	private List<Cliente> clientes;
 
 	public UsuarioMB() {
-		this.pessoa = new Pessoa();
+		this.cliente = new Cliente();
 	}
 
-	public ArrayList<Pessoa> listarUsuario() {
-		return ServicoPessoa.listar();
-	}
-
-	public void excluirUsuario(Pessoa pessoa) {
-		ServicoPessoa.removerPessoa(pessoa);
+	public void excluirUsuario(Cliente cliente) {
+		this.servicoCliente.removerCliente(cliente);
 		JSFUtil.enviarMensagem("Usuário removido!");
 	}
 
-	public Pessoa getPessoa() {
-		return pessoa;
+	public Cliente getCliente() {
+		return cliente;
 	}
 
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
+
+	public List<Cliente> getClientes() {
+		if(this.clientes == null || this.clientes.isEmpty()) {
+			this.clientes = this.servicoCliente.listar();
+		}
+		return clientes;
+	}
+
+	public void setClientes(List<Cliente> clientes) {
+		this.clientes = clientes;
+	}
+	
+	
 	
 }

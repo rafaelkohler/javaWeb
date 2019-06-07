@@ -1,30 +1,50 @@
 package com.rafaelkohler.cadastrousuario.entity;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.rafaelkohler.cadastrousuario.enumarator.Esporte;
-import com.rafaelkohler.cadastrousuario.enumarator.Estados;
-import com.rafaelkohler.cadastrousuario.managed.EstadoMB;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
-public class Pessoa {
+import com.rafaelkohler.cadastrousuario.enumarator.Estados;
+
+@Entity
+@Table(name = "cliente")
+public class Cliente {
+	
+	@Id
+	@NotNull
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "NUM_SEQ_CLIENTE")
+	@SequenceGenerator(name = "NUM_SEQ_CLIENTE", sequenceName = "NUM_SEQ_CLIENTE", allocationSize = 0)
+	private Integer id;
 	
 	private String nomeCompleto;
 	private String cpf;
 	private String rg;
-	private Usuario usuario;
 	private Date dataNascimento;
 	private String sexo;
-	private String estado;
 	
-	private List<Esporte> esportesFavorito;
-
-	public Pessoa() {
-		this.usuario = new Usuario();
-		this.esportesFavorito = new ArrayList<Esporte>();
-		
-	}
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_usuario")
+	private Usuario usuario;
+	
+	@Enumerated(value = EnumType.STRING)
+	private Estados estado;
+	
+	@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
+	private List<Esportes> esportesFavorito;
+	
 	public String getNomeCompleto() {
 		return nomeCompleto;
 	}
@@ -77,20 +97,20 @@ public class Pessoa {
 		this.sexo = sexo;
 	}
 
-	public String getEstado() {
+	public Estados getEstado() {
 		return estado;
 	}
 
-	public void setEstado(String estado) {
+	public void setEstado(Estados estado) {
 		this.estado = estado;
 	}
 
-	public List<Esporte> getEsportesFavorito() {
+	public List<Esportes> getEsportesFavorito() {
 		return esportesFavorito;
 	}
 
-	public void setEsportesFavorito(List<Esporte> esportesFavorito) {
+	public void setEsportesFavorito(List<Esportes> esportesFavorito) {
 		this.esportesFavorito = esportesFavorito;
 	}
-	
+
 }

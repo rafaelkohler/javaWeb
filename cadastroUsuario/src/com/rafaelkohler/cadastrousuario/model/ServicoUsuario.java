@@ -1,31 +1,40 @@
 package com.rafaelkohler.cadastrousuario.model;
 
-import java.util.ArrayList;
+import java.util.List;
+
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import com.rafaelkohler.cadastrousuario.entity.Usuario;
 
+@Stateless
 public class ServicoUsuario {
 
-	private static ArrayList<Usuario> usuariosCadastrados = new ArrayList<Usuario>();
+	@PersistenceContext
+	private EntityManager entityManager;
 
-	public static void cadastrarUsuario(Usuario usuario) {
-		usuariosCadastrados.add(usuario);
+	public void cadastrarUsuario(Usuario usuario) {
+		this.entityManager.persist(usuario);
 	}
 
-	public static ArrayList<Usuario> listar() {
-		return usuariosCadastrados;
+	public void removerUsuario(Usuario usuario) {
+		this.entityManager.remove(this.entityManager.merge(usuario));
 	}
 
-	public static void removerUsuario(Usuario usuario) {
-		usuariosCadastrados.remove(usuario);
+	public List<Usuario> listar() {
+		return this.entityManager.createQuery("FROM Usuario u", Usuario.class).getResultList();
 	}
 
 	public boolean existe(Usuario usu) {
-		for (Usuario usuario : usuariosCadastrados) {
-			if (usu.getLogin().equals(usuario.getLogin()) && usu.getSenha().equals(usuario.getSenha())) {
-				return true;
-			} else {
-				return false;
+		List<Usuario> usuariosCadastrados = listar();
+		if (usuariosCadastrados != null && !usuariosCadastrados.isEmpty()) {
+			for (Usuario usuario : usuariosCadastrados) {
+				if (usu.getLogin().equals(usuario.getLogin()) && usu.getSenha().equals(usuario.getSenha())) {
+					return true;
+				} else {
+					return false;
+				}
 			}
 		}
 		return false;

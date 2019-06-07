@@ -8,7 +8,7 @@
 
 		<p:growl globalOnly="true" />
 
-		<p:dataTable value="#{usuarioMB.listarUsuario()}" var="usuario">
+		<p:dataTable value="#{usuarioMB.clientes}" var="usuario">
 
 			<p:column headerText="Nome">
 				<h:outputText value="#{usuario.nomeCompleto}" />

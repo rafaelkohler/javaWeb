@@ -1,4 +1,4 @@
-package com.rafaelkohler.scv.entidade;
+package com.rafaelkohler.cadastrousuario.entity;
 
 import java.util.Date;
 
@@ -16,7 +16,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import com.rafaelkohler.scv.enumerado.Combustivel;
+import com.rafaelkohler.cadastrousuario.enumarator.Combustivel;
 
 /**
  * Representa um veículo

@@ -1,4 +1,4 @@
-package com.rafaelkohler.scv.modelo;
+package com.rafaelkohler.cadastrousuario.model;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import com.rafaelkohler.scv.entidade.Veiculo;
+import com.rafaelkohler.cadastrousuario.entity.Veiculo;
 
 @Stateless
 public class ServicoVeiculo {

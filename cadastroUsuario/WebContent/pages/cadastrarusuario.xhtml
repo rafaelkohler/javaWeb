@@ -16,7 +16,7 @@
 						<p:outputLabel for="nome" value="Nome: " />
 					</div>
 					<div class="ui-g-10">
-						<h:inputText id="nome" value="#{cadastrarUsuarioMB.pessoa.nomeCompleto}" style="width: 100%;" />
+						<h:inputText id="nome" value="#{cadastrarUsuarioMB.cliente.nomeCompleto}" style="width: 100%;" />
 						<p:message for="nome" />
 					</div>
 				</div>
@@ -26,7 +26,7 @@
 						<p:outputLabel for="cpf" value="CPF: " />
 					</div>
 					<div class="ui-g-4">
-						<h:inputText id="cpf" value="#{cadastrarUsuarioMB.pessoa.cpf}" style="width: 100%;" />
+						<h:inputText id="cpf" value="#{cadastrarUsuarioMB.cliente.cpf}" style="width: 100%;" />
 						<p:message for="cpf" />
 					</div>
 
@@ -34,7 +34,7 @@
 						<p:outputLabel for="rg" value="RG: " />
 					</div>
 					<div class="ui-g-5">
-						<h:inputText id="rg" value="#{cadastrarUsuarioMB.pessoa.rg}" style="width: 100%;" />
+						<h:inputText id="rg" value="#{cadastrarUsuarioMB.cliente.rg}" style="width: 100%;" />
 						<p:message for="rg" />
 					</div>
 				</div>
@@ -44,7 +44,7 @@
 						<p:outputLabel for="usu" value="Usuário: " />
 					</div>
 					<div class="ui-g-10">
-						<h:inputText id="usu" value="#{cadastrarUsuarioMB.pessoa.usuario.login}" style="width: 100%;" />
+						<h:inputText id="usu" value="#{cadastrarUsuarioMB.cliente.usuario.login}" style="width: 100%;" />
 						<p:message for="usu" />
 					</div>
 				</div>
@@ -54,7 +54,7 @@
 						<p:outputLabel for="senha" value="Senha: " />
 					</div>
 					<div class="ui-g-10">
-						<p:password id="senha" value="#{cadastrarUsuarioMB.pessoa.usuario.senha}" style="width: 100%;" />
+						<p:password id="senha" value="#{cadastrarUsuarioMB.cliente.usuario.senha}" style="width: 100%;" />
 						<p:message for="senha" />
 					</div>
 				</div>
@@ -64,7 +64,7 @@
 						<p:outputLabel for="nascimento" value="Dia Nasc.: " />
 					</div>
 					<div class="ui-g-4">
-						<p:calendar id="nascimento" value="#{cadastrarUsuarioMB.pessoa.dataNascimento}" pattern="dd/MM/yyyy" mask="true" style="width: 100%;" />
+						<p:calendar id="nascimento" value="#{cadastrarUsuarioMB.cliente.dataNascimento}" pattern="dd/MM/yyyy" mask="true" style="width: 100%;" />
 						<p:message for="nascimento" />
 					</div>
 
@@ -72,7 +72,7 @@
 						<p:outputLabel for="sexo" value="Sexo: " />
 					</div>
 					<div class="ui-g-5">
-						<p:selectOneRadio id="sexo" value="#{cadastrarUsuarioMB.pessoa.sexo}">
+						<p:selectOneRadio id="sexo" value="#{cadastrarUsuarioMB.cliente.sexo}">
 							<f:selectItem itemLabel="Masculino" itemValue="1" />
 							<f:selectItem itemLabel="Feminino" itemValue="2" />
 						</p:selectOneRadio>
@@ -86,7 +86,7 @@
 						<p:outputLabel for="uf" value="UF Nasc.: " />
 					</div>
 					<div class="ui-g-4">
-						<p:selectOneMenu id="uf" value="#{cadastrarUsuarioMB.pessoa.estado}" converter="omnifaces.SelectItemsIndexConverter" style="width: 100%;">
+						<p:selectOneMenu id="uf" value="#{cadastrarUsuarioMB.cliente.estado}" converter="omnifaces.SelectItemsIndexConverter" style="width: 100%;">
 							<f:selectItem itemLabel="--Selecione--" noSelectionOption="true" />
 							<f:selectItems value="#{estadoMB.listaEstados()}" var="estado" itemLabel="#{estado.nome}" itemValue="#{estado}" />
 						</p:selectOneMenu>
@@ -100,7 +100,7 @@
 						<p:outputLabel for="esporte" value="Esportes: " />
 					</div>
 					<div class="ui-g-10">
-						<p:selectManyCheckbox id="esporte" value="#{cadastrarUsuarioMB.pessoa.esportesFavorito}" layout="grid" columns="4">
+						<p:selectManyCheckbox id="esporte" value="#{cadastrarUsuarioMB.cliente.esportesFavorito}" layout="grid" columns="4">
 							<f:selectItems value="#{esporteMB.listaEsportes()}" var="esporte" itemLabel="#{esporte.nome}" itemValue="#{esporte}" />
 						</p:selectManyCheckbox>
 					</div>

@@ -1,4 +1,4 @@
-package com.rafaelkohler.scv.web;
+package com.rafaelkohler.cadastrousuario.managed;
 
 import java.util.List;
 
@@ -6,13 +6,13 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
-import com.rafaelkohler.scv.entidade.Veiculo;
-import com.rafaelkohler.scv.modelo.ServicoVeiculo;
-import com.rafaelkohler.scv.web.util.JSFUtils;
+import com.rafaelkohler.cadastrousuario.entity.Veiculo;
+import com.rafaelkohler.cadastrousuario.model.ServicoVeiculo;
+import com.rafaelkohler.cadastrousuario.util.JSFUtil;
 
 @Named
 @RequestScoped
-public class VeiculoBean {
+public class VeiculoMB {
 
 	@EJB
 	private ServicoVeiculo servicoVeiculo;
@@ -20,13 +20,13 @@ public class VeiculoBean {
 	
 	
 
-	public VeiculoBean() {
+	public VeiculoMB() {
 		this.veiculo = new Veiculo();
 	}
 
 	public void salvarVeiculo() {
 		this.servicoVeiculo.cadastrarVeiculo(this.veiculo);
-		JSFUtils.enviarMensagemDeSucesso("Veículo cadastrado com sucesso!");
+		JSFUtil.enviarMensagem("Veículo cadastrado com sucesso!");
 		veiculo = new Veiculo();
 	}
 
@@ -36,7 +36,7 @@ public class VeiculoBean {
 
 	public void excluirVeiculo(Veiculo veiculo) {
 		this.servicoVeiculo.excluirVeiculo(veiculo);
-		JSFUtils.enviarMensagemDeSucesso("Veículo excluído com sucesso!");
+		JSFUtil.enviarMensagem("Veículo excluído com sucesso!");
 	}
 
 	public Veiculo getVeiculo() {

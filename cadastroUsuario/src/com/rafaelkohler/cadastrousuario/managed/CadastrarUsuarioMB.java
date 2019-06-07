@@ -1,10 +1,11 @@
 package com.rafaelkohler.cadastrousuario.managed;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
-import com.rafaelkohler.cadastrousuario.entity.Pessoa;
-import com.rafaelkohler.cadastrousuario.model.ServicoPessoa;
+import com.rafaelkohler.cadastrousuario.entity.Cliente;
+import com.rafaelkohler.cadastrousuario.model.ServicoCliente;
 import com.rafaelkohler.cadastrousuario.model.ServicoUsuario;
 import com.rafaelkohler.cadastrousuario.util.JSFUtil;
 
@@ -12,27 +13,32 @@ import com.rafaelkohler.cadastrousuario.util.JSFUtil;
 @RequestScoped
 public class CadastrarUsuarioMB {
 	
-	private Pessoa pessoa;
+	@EJB
+	private ServicoUsuario servicoUsuario;
+	
+	@EJB
+	private ServicoCliente servicoCliente;
+	
+	private Cliente cliente;
 	
 	public CadastrarUsuarioMB() {
-		this.pessoa = new Pessoa();
+		this.cliente = new Cliente();
 	}
 	
 	public void cadastrarUsuario() {
-		ServicoPessoa.cadastrarPessoa(this.pessoa);
-		ServicoUsuario.cadastrarUsuario(this.pessoa.getUsuario());
+		this.servicoCliente.cadastrarCliente(this.cliente);
+		this.servicoUsuario.cadastrarUsuario(this.cliente.getUsuario());
 		JSFUtil.enviarMensagem("Usuário cadastrado!");
-		this.pessoa = new Pessoa();
-	}
-	
-	
-
-	public Pessoa getPessoa() {
-		return pessoa;
+		this.cliente = new Cliente();
 	}
 
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
+	public Cliente getCliente() {
+		return cliente;
 	}
+
+	public void setCliente(Cliente pessoa) {
+		this.cliente = pessoa;
+	}
+	
 	
 }

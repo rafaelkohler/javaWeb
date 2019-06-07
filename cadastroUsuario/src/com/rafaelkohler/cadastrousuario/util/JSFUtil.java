@@ -12,4 +12,12 @@ public class JSFUtil {
 		
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
+	
+	public static void enviarMensagemDeAtencao(String mensagem) {
+		FacesMessage msg = new FacesMessage();
+		msg.setSummary(mensagem);
+		msg.setSeverity(FacesMessage.SEVERITY_WARN);
+		
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+	}
 }

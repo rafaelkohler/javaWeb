@@ -1,4 +1,4 @@
-package com.rafaelkohler.scv.entidade;
+package com.rafaelkohler.cadastrousuario.entity;
 
 import java.util.List;
 

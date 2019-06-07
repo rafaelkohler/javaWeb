@@ -17,20 +17,19 @@ import com.rafaelkohler.scv.entidade.Marca;
 @Stateless //dispara por varios clusters a implantacao do software
 public class ServicoMarca {
 
-	@PersistenceContext(unitName = "veiculo")
+	@PersistenceContext
 	private EntityManager entityManager; //conecta com o banco
 	
 	public void cadastrarMarca(Marca marca) {
 		this.entityManager.persist(marca);
 	}
 
-	public List<Marca> listar() {
-		return this.entityManager.createQuery("FROM Marca m", Marca.class).getResultList();
-	}
-
 	public void excluirMarca(Marca marca) {
 		this.entityManager.remove(this.entityManager.merge(marca));
-		
+	}
+
+	public List<Marca> listar() {
+		return this.entityManager.createQuery("FROM Marca m", Marca.class).getResultList();
 	}
 	
 }
