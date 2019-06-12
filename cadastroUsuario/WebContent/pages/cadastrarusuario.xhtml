@@ -88,7 +88,7 @@
 					<div class="ui-g-4">
 						<p:selectOneMenu id="uf" value="#{cadastrarUsuarioMB.cliente.estado}" converter="omnifaces.SelectItemsIndexConverter" style="width: 100%;">
 							<f:selectItem itemLabel="--Selecione--" noSelectionOption="true" />
-							<f:selectItems value="#{estadoMB.listaEstados()}" var="estado" itemLabel="#{estado.nome}" itemValue="#{estado}" />
+							<f:selectItems value="#{cadastrarUsuarioMB.estados}" var="estado" itemLabel="#{estado.nome}" itemValue="#{estado}" />
 						</p:selectOneMenu>
 						<p:message for="uf" />
 					</div>
@@ -100,8 +100,8 @@
 						<p:outputLabel for="esporte" value="Esportes: " />
 					</div>
 					<div class="ui-g-10">
-						<p:selectManyCheckbox id="esporte" value="#{cadastrarUsuarioMB.cliente.esportesFavorito}" layout="grid" columns="4">
-							<f:selectItems value="#{esporteMB.listaEsportes()}" var="esporte" itemLabel="#{esporte.nome}" itemValue="#{esporte}" />
+						<p:selectManyCheckbox id="esporte" value="#{cadastrarUsuarioMB.cliente.esportesFavorito}" layout="grid" columns="4" converter="omnifaces.SelectItemsIndexConverter">
+							<f:selectItems value="#{cadastrarUsuarioMB.esportes}" var="esporte" itemLabel="#{esporte.nome}" itemValue="#{esporte}" />
 						</p:selectManyCheckbox>
 					</div>
 				</div>

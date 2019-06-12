@@ -3,9 +3,8 @@ package com.rafaelkohler.cadastrousuario.entity;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,11 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
-import com.rafaelkohler.cadastrousuario.enumarator.Estados;
 
 @Entity
 @Table(name = "cliente")
@@ -35,15 +33,20 @@ public class Cliente {
 	private Date dataNascimento;
 	private String sexo;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
 	
-	@Enumerated(value = EnumType.STRING)
-	private Estados estado;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_estado")
+	private Estado estado;
 	
 	@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
-	private List<Esportes> esportesFavorito;
+	private List<Esporte> esportesFavorito;
+	
+	public Cliente() {
+		this.usuario = new Usuario();
+	}
 	
 	public String getNomeCompleto() {
 		return nomeCompleto;
@@ -97,19 +100,19 @@ public class Cliente {
 		this.sexo = sexo;
 	}
 
-	public Estados getEstado() {
+	public Estado getEstado() {
 		return estado;
 	}
 
-	public void setEstado(Estados estado) {
+	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
 
-	public List<Esportes> getEsportesFavorito() {
+	public List<Esporte> getEsportesFavorito() {
 		return esportesFavorito;
 	}
 
-	public void setEsportesFavorito(List<Esportes> esportesFavorito) {
+	public void setEsportesFavorito(List<Esporte> esportesFavorito) {
 		this.esportesFavorito = esportesFavorito;
 	}
 

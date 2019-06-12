@@ -1,6 +1,6 @@
 package com.rafaelkohler.cadastrousuario.enumarator;
 
-public enum Esporte {
+public enum TipoEsporte {
 
 	FUTEBOL("Futebol"),
 	VOLEI("Volei"),
@@ -13,7 +13,7 @@ public enum Esporte {
 
 	private String nome;
 
-	private Esporte(String nome) {
+	private TipoEsporte(String nome) {
 		this.nome = nome;
 	}
 

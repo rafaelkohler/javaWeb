@@ -2,6 +2,7 @@ package com.rafaelkohler.cadastrousuario.managed;
 
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
@@ -13,6 +14,7 @@ import com.rafaelkohler.cadastrousuario.util.JSFUtil;
 @RequestScoped
 public class LoginMB {
 
+	@EJB
 	private ServicoUsuario servicoUsuario;
 	private Usuario usuario;
 	private List<Usuario> usuarios;
@@ -37,7 +39,7 @@ public class LoginMB {
 	}
 
 	public String efetuaLogin() {
-		boolean existe = new ServicoUsuario().existe(this.usuario);
+		boolean existe = this.servicoUsuario.existe(this.usuario);
 		if(existe) {
 			return "usuarioscadastrados?faces-redirect=true";
 		}

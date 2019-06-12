@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/recursos/template/template.xhtml">
+	<ui:define name="tituloPagina">Login de Acesso</ui:define>
+	<ui:define name="tituloPrincipal">Login</ui:define>
+	<ui:define name="tituloSecundario">favor utilizar seu login e sua senha para acessar o sistema.</ui:define>
+	<ui:define name="botoesAcao">
+		<p:commandButton action="#{loginMB.efetuaLogin()}" update="@form" value="Entrar" style="width: 30%;" />
+	</ui:define>
+
+	<ui:define name="conteudo">
+		<h:panelGroup styleClass="ui-panelgrid-blank">
+			<p:fieldset legend="Forneça suas credenciais para acessar o sistema!" style="width: 30%; background: none;">
+
+				<div class="ui-g ">
+					<div class="ui-g-12">
+						<p:outputLabel for="login" value="Login:" />
+						<p:inputText id="login" value="#{loginMB.usuario.login}" style="margin-left: 20px;" />
+						<p:message for="login" />
+					</div>
+
+					<div class="ui-g-12">
+						<p:outputLabel for="senha" value="Senha:" />
+						<p:password id="senha" value="#{loginMB.usuario.senha}" style="margin-left: 20px;" />
+						<p:message for="senha" />
+					</div>
+				</div>
+
+				<div class="ui-g-12" style="padding-top: 40px;">
+					Ainda não é cadastrado? Clique
+					<p:commandLink value="aqui." action="#{loginMB.formUsuario}" immediate="true" />
+				</div>
+			</p:fieldset>
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>
+</html>
