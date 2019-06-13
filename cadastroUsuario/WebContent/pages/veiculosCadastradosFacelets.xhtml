@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/recursos/template/template.xhtml">
+
+	<ui:define name="tituloPagina">Lista de Veículos</ui:define>
+	<ui:define name="tituloPrincipal">Lista de Veículos Cadastrados</ui:define>
+	<ui:define name="tituloSecundario"></ui:define>
+	<ui:define name="botoesAcao">
+		<p:button value="Acesse o Sistema" outcome="loginFacelets" />
+	</ui:define>
+
+	<ui:define name="conteudo">
+
+		<p:dataTable value="#{veiculoMB.veiculos}" var="veiculo" styleClass="ui-datatable">
+			<p:column headerText="Modelo">
+				<h:outputText value="#{veiculo.modelo}" />
+			</p:column>
+			<p:column headerText="Marca">
+				<h:outputText value="#{veiculo.marca.nome}" />
+			</p:column>
+			<p:column headerText="Placa">
+				<h:outputText value="#{veiculo.placa}" />
+			</p:column>
+			<p:column headerText="Ano Fabricação">
+				<h:outputText value="#{veiculo.anoFabricacao}" />
+			</p:column>
+			<p:column headerText="Combustível">
+				<h:outputText value="#{veiculo.combustivel.descricao}" />
+			</p:column>
+			<p:column headerText="Ações">
+
+				<p:commandButton value="Excluir" action="#{veiculoMB.excluirVeiculo(veiculo)}" update="@form">
+					<p:confirm header="Confirmação" message="Deseja realmente excluir a marca?" icon="pi pi-exclamation-triangle" />
+				</p:commandButton>
+
+			</p:column>
+		</p:dataTable>
+
+
+		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+			<p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+			<p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+		</p:confirmDialog>
+		
+	</ui:define>
+
+</ui:composition>
+</html>

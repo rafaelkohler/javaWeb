@@ -35,7 +35,7 @@ public class LoginMB {
 	}
 	
 	public String formUsuario() {
-		return "cadastrarusuario?faces-redirect=true";
+		return "cadastroUsuarioFacelets?faces-redirect=true";
 	}
 
 	public String efetuaLogin() {
@@ -67,5 +67,5 @@ public class LoginMB {
 	}
 	
 	
-
+//jaas
 }

@@ -1,5 +1,6 @@
 package com.rafaelkohler.cadastrousuario.managed;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -17,16 +18,16 @@ public class VeiculoMB {
 	@EJB
 	private ServicoVeiculo servicoVeiculo;
 	private Veiculo veiculo;
+	private List<Veiculo> veiculos;
 	
-	
-
 	public VeiculoMB() {
 		this.veiculo = new Veiculo();
+		this.veiculos = new ArrayList<>();
 	}
 
 	public void salvarVeiculo() {
 		this.servicoVeiculo.cadastrarVeiculo(this.veiculo);
-		JSFUtil.enviarMensagem("Veículo cadastrado com sucesso!");
+		JSFUtil.enviarMensagem("Veículo cadastrado!");
 		veiculo = new Veiculo();
 	}
 
@@ -36,7 +37,7 @@ public class VeiculoMB {
 
 	public void excluirVeiculo(Veiculo veiculo) {
 		this.servicoVeiculo.excluirVeiculo(veiculo);
-		JSFUtil.enviarMensagem("Veículo excluído com sucesso!");
+		JSFUtil.enviarMensagem("Veículo excluído!");
 	}
 
 	public Veiculo getVeiculo() {
@@ -47,4 +48,15 @@ public class VeiculoMB {
 		this.veiculo = veiculo;
 	}
 
+	public List<Veiculo> getVeiculos() {
+		if(this.veiculos == null || this.veiculos.isEmpty()) {
+			this.veiculos = servicoVeiculo.listar();
+		}
+		return veiculos;
+	}
+
+	public void setVeiculos(List<Veiculo> veiculos) {
+		this.veiculos = veiculos;
+	}
+	
 }
