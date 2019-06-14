@@ -15,6 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -30,6 +32,8 @@ public class Cliente {
 	private String nomeCompleto;
 	private String cpf;
 	private String rg;
+	
+	@Temporal(value = TemporalType.DATE)
 	private Date dataNascimento;
 	private String sexo;
 	
@@ -43,6 +47,11 @@ public class Cliente {
 	
 	@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
 	private List<Esporte> esportesFavorito;
+	
+//	@ManyToMany(mappedBy = "clientes", fetch = FetchType.EAGER)
+//	private List<Esporte> esportes;
+	
+	
 	
 	public Cliente() {
 		this.usuario = new Usuario();

@@ -1,6 +1,5 @@
 package com.rafaelkohler.cadastrousuario.managed;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -22,7 +21,6 @@ public class VeiculoMB {
 	
 	public VeiculoMB() {
 		this.veiculo = new Veiculo();
-		this.veiculos = new ArrayList<>();
 	}
 
 	public void salvarVeiculo() {

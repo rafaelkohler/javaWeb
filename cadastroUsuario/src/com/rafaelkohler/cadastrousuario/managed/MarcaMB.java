@@ -1,6 +1,5 @@
 package com.rafaelkohler.cadastrousuario.managed;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -22,7 +21,6 @@ public class MarcaMB {
 
 	public MarcaMB() {
 		this.marca = new Marca();
-		this.marcas = new ArrayList<>();
 	}
 
 	public void salvarMarca() {

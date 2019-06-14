@@ -1,6 +1,5 @@
 package com.rafaelkohler.cadastrousuario.managed;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -21,8 +20,6 @@ import com.rafaelkohler.cadastrousuario.util.JSFUtil;
 public class CadastrarUsuarioMB {
 
 	@EJB
-	private ServicoUsuario servicoUsuario;
-	@EJB
 	private ServicoCliente servicoCliente;
 	@EJB
 	private ServicoEsportes servicoEsporte;
@@ -35,8 +32,6 @@ public class CadastrarUsuarioMB {
 
 	public CadastrarUsuarioMB() {
 		this.cliente = new Cliente();
-		this.esportes = new ArrayList<>();
-		this.estados = new ArrayList<>();
 	}
 
 	public void cadastrarUsuario() {

@@ -2,6 +2,7 @@ package com.rafaelkohler.cadastrousuario.managed;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
@@ -23,6 +24,11 @@ public class LoginMB {
 		this.usuario = new Usuario();
 	}
 
+//	@PostConstruct
+//	public void init() {
+//		this.usuarios = this.servicoUsuario.listar();
+//	}
+
 	public void cadastrarUsuario() {
 		this.servicoUsuario.cadastrarUsuario(this.usuario);
 		this.usuario = new Usuario();
@@ -33,14 +39,14 @@ public class LoginMB {
 		this.servicoUsuario.removerUsuario(usuario);
 		JSFUtil.enviarMensagem("Usuário removido!");
 	}
-	
+
 	public String formUsuario() {
 		return "cadastroUsuarioFacelets?faces-redirect=true";
 	}
 
 	public String efetuaLogin() {
 		boolean existe = this.servicoUsuario.existe(this.usuario);
-		if(existe) {
+		if (existe) {
 			return "usuarioscadastrados?faces-redirect=true";
 		}
 		this.usuario = new Usuario();
@@ -56,7 +62,7 @@ public class LoginMB {
 	}
 
 	public List<Usuario> getUsuarios() {
-		if(this.usuarios == null || this.usuarios.isEmpty()) {
+		if (this.usuarios == null || this.usuarios.isEmpty()) {
 			this.usuarios = this.servicoUsuario.listar();
 		}
 		return usuarios;
@@ -65,7 +71,6 @@ public class LoginMB {
 	public void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios;
 	}
-	
-	
+
 //jaas
 }

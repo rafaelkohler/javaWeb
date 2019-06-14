@@ -22,6 +22,10 @@ public class Esporte {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_cliente")
 	private Cliente cliente;
+	
+//	@ManyToMany(fetch = FetchType.LAZY)
+//	private List<Cliente> clientes;
+	
 	private String nome;
 	
 	public Esporte() {
