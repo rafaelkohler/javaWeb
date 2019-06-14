@@ -31,7 +31,7 @@
 							<p:outputLabel for="cpf" value="CPF: " />
 						</div>
 						<div class="ui-g-4">
-							<h:inputText id="cpf" value="#{cadastrarUsuarioMB.cliente.cpf}" style="width: 100%;" />
+							<p:inputMask mask="999.999.999-99" id="cpf" value="#{cadastrarUsuarioMB.cliente.cpf}" style="width: 100%;" />
 							<p:message for="cpf" />
 						</div>
 
@@ -78,8 +78,8 @@
 						</div>
 						<div class="ui-g-5">
 							<p:selectOneRadio id="sexo" value="#{cadastrarUsuarioMB.cliente.sexo}">
-								<f:selectItem itemLabel="Masculino" itemValue="1" />
-								<f:selectItem itemLabel="Feminino" itemValue="2" />
+								<f:selectItem itemLabel="Masculino" itemValue="M" />
+								<f:selectItem itemLabel="Feminino" itemValue="F" />
 							</p:selectOneRadio>
 							<p:message for="sexo" />
 						</div>
@@ -108,6 +108,7 @@
 							<p:selectManyCheckbox id="esporte" value="#{cadastrarUsuarioMB.cliente.esportesFavorito}" layout="grid" columns="4" converter="omnifaces.SelectItemsIndexConverter">
 								<f:selectItems value="#{cadastrarUsuarioMB.esportes}" var="esporte" itemLabel="#{esporte.nome}" itemValue="#{esporte}" />
 							</p:selectManyCheckbox>
+							<p:message for="esporte"/>
 						</div>
 					</div>
 

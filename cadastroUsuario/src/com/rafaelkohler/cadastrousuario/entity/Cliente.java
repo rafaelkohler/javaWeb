@@ -98,7 +98,7 @@ public class Cliente {
 	}
 
 	public String getSexoString() {
-		return sexo != null && !sexo.isEmpty() && sexo.equals("1") ? "Masculino" : "Feminino";
+		return sexo != null && !sexo.isEmpty() && sexo.equals("M") ? "Masculino" : "Feminino";
 	}
 	
 	public String getSexo() {
