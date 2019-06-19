@@ -12,7 +12,6 @@ import com.rafaelkohler.cadastrousuario.entity.Estado;
 import com.rafaelkohler.cadastrousuario.model.ServicoCliente;
 import com.rafaelkohler.cadastrousuario.model.ServicoEsportes;
 import com.rafaelkohler.cadastrousuario.model.ServicoEstado;
-import com.rafaelkohler.cadastrousuario.model.ServicoUsuario;
 import com.rafaelkohler.cadastrousuario.util.JSFUtil;
 
 @Named

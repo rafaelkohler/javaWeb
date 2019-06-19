@@ -2,7 +2,6 @@ package com.rafaelkohler.cadastrousuario.managed;
 
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
@@ -47,7 +46,7 @@ public class LoginMB {
 	public String efetuaLogin() {
 		boolean existe = this.servicoUsuario.existe(this.usuario);
 		if (existe) {
-			return "usuarioscadastrados?faces-redirect=true";
+			return "veiculosCadastradosFacelets?faces-redirect=true";
 		}
 		this.usuario = new Usuario();
 		return "login";
